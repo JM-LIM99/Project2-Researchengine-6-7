@@ -1,4 +1,4 @@
-# Moteur de recherche des lettres 6, 7 (Stagiaire de CERS)
+# Moteur de recherche des lettres 6, 7 (Stagiaire de CERES)
 
 
 référence de Code de python : https://github.com/Antonomaz/tools/tree/master/Produce_Biblio_html
