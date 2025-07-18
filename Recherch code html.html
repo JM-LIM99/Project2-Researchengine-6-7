@@ -1,0 +1,185 @@
+
+<html>
+    <head>
+        <title>Letters réalisé par Maria Hooker</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="initial css file1 copy.css" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>  <!-- datatable -->
+
+        
+    </head>
+
+
+
+
+<body>
+<div id='disclaimer'>
+</br>
+<p align="center"><strong>Botanical Empire: Mapping William J. Hooker’s networks</strong></p>
+<p align="center">This site offers access to a search engine for the correspondence of William Jackson Hooker (1785–1865), a 19th-century English botanist. This prototype is part of a research project I have been conducting over the past four years on the scientific networks Hooker developed across the British Empire.</p>
+<p align="center">The archive contains approximately 27,000 incoming letters dating from 1810 to 1865. Around 8,000 have been digitised and are available on JSTOR Global Plants (subscription required). All the letters are preserved in 76 volumes at Kew’s Library and Archives, London.
+    This prototype is based on a handwritten index compiled by Hooker’s wife, Maria Hooker, most probably after his death. The index is organised alphabetically by sender surname. Each letter is identified by a unique reference (volume and folio, “document_ID”), along with key metadata: name, first name, place of origin, and date (when known).</p>
+<p align="center">This work has been carried out manually, and despite best efforts, some errors or inconsistencies may remain. If you have any questions, remarks or specific requests, please contact me: melanie.cournil[at]sorbonne-universite.fr</p>
+
+</div>
+
+<form align="left" id="loginForm" onsubmit="return checkLogin();">   <!-- login form -->
+    <table>
+    <tr>
+        <td><h2>Login</h2></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="userID" placeholder="ID"></td>
+    </tr>
+    <tr>
+        <td><input type="password" id="userPW" placeholder="Password"></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Sign in" class="btn"></td>
+    </tr>
+    </table>
+</form>
+<!-- login check, login id and password -->
+<script>
+    function checkLogin() {
+        const id = document.getElementById("userID").value;   
+        const pw = document.getElementById("userPW").value;
+
+        if (id === "1234" && pw === "1234") {
+            document.getElementById("loginForm").style.display = "none";
+            document.querySelectorAll(".secretInfo").forEach(el => {
+                el.style.display = "table-cell";
+
+            });
+            return false;
+        } else {
+            alert("wrong id");
+            return false; 
+        }
+    }
+</script>
+
+<div id='results'></div>
+
+<!-- Mytable from * -->
+<table id ='myTable' class="display">
+    
+
+    <thead>
+        <tr>
+            <th>Document_ID</th>
+            <th>Surname</th>
+            <th>First name</th>
+            <th>Orignal_Location</th>
+            <th>Date_year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Current_location</th>
+            <th>City</th>
+            <th>County</th>
+            <th>My_notes</th>
+            <th>Index_page</th>
+            <th>Notes_written_on_the_letter</th>
+        </tr>
+    </thead>
+    <tbody>   <!-- secretInfo, hidden-col pour cacher des informations / to hide information -->
+        <tr><td>39-1</td><td>Abbott</td><td>C.</td><td>Taunton</td><td>1861</td><td>8</td><td>31</td><td></td><td></td><td></td><td class="secretInfo" style="display: none;"></td><td class="hidden-col">1</td><td class="hidden-col"></td></tr>
+    </tbody>
+
+</table>
+ <!-- to hide -->
+<style> 
+    .hidden-col {
+        display: none;
+    }
+</style>
+ <!-- Ajouter des index dans la colonne -->  <!--  Add indexes to the column -->
+<script>
+    $(document).ready(function () {
+
+        $('#myTable thead').append(`
+            <tr>
+                <th><input type="text" id="search-Document_ID" placeholder="Search Document_ID" /></th>
+                <th><input type="text" id="search-Surname" placeholder="Search Surname" /></th>
+                <th><input type="text" id="search-First name" placeholder="Search First Name" /></th>
+                <th><input type="text" id="search-Orignal_Location" placeholder="Search Original_Location" /></th>
+                <th><input type="text" id="search-Date_year" placeholder="Search Date_year" /></th>
+                <th><input type="text" id="search-Month" placeholder="Search Month" /></th>
+                <th><input type="text" id="search-Day" placeholder="Search Day" /></th>
+                <th><input type="text" id="search-Current_location" placeholder="Search Current_location"" /></th>
+                <th><input type="text" id="search-City" placeholder="Search City" /></th>
+                <th><input type="text" id="search-County" placeholder="Search County" /></th>
+                <th><span style="color: gray;">(login to view)</th>
+                <th><span style="color: gray;">(click to view)</span></th>
+                <th><span style="color: gray;"></span></th>
+            </tr>
+        `);
+        let table = $('#myTable').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        autoWidth: false,
+
+        columnDefs: [
+            { targets: [11, 12], searchable: false } 
+        ]
+    });
+// Add search functionality for each column
+    $('#myTable thead tr:eq(1) th').each(function (i) {
+
+        $('#search-Document_ID').on('keyup change', function () {
+            table.column(0).search(this.value).draw();
+        });
+        $('#search-Surname').on('keyup change', function () {
+            table.column(1).search(this.value).draw();
+        });
+        $('#search-First name').on('keyup change', function () {
+            table.column(2).search(this.value).draw();
+        });
+        $('#search-Orignal_Location').on('keyup change', function () {
+            table.column(3).search(this.value).draw();
+        });
+        $('#search-Date_year').on('keyup change', function () {
+            table.column(4).search(this.value).draw();
+        });
+        $('#search-Month').on('keyup change', function () {
+            table.column(5).search(this.value).draw();
+        });
+        $('#search-Day').on('keyup change', function () {
+            table.column(6).search(this.value).draw();
+        });
+        $('#search-Current_location').on('keyup change', function () {
+            table.column(7).search(this.value).draw();
+        });
+        $('#search-City').on('keyup change', function () {
+            table.column(8).search(this.value).draw();
+        });
+        $('#search-County').on('keyup change', function () {
+            table.column(9).search(this.value).draw();
+        });
+        $('#search-My_notes').on('keyup change', function () {
+            table.column(10).search(this.value).draw();
+        });
+
+        $('#myTable tbody').on('click', 'tr', function () {
+        let rowData = table.row(this).data();
+        let indexPage = rowData[11];
+        let notes = rowData[12]; // Delete recherche function 
+
+        $('#details').html(
+            `<strong>Index page:</strong> ${indexPage}<br><strong>notes:</strong> ${notes}` // create the box of indexpages and notes
+        ).show();
+    });
+
+
+    });
+
+});
+
+</script>
+
+<div id="details" style="margin-top:20px; padding:10px; border:1px solid #aaa; display:none;"></div>
+
+
+</body>
+</html>

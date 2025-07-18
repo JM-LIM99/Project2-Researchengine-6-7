@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title> recherch(years + Surname)</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> // Leaflet CSS
+  <style>
+    #map { height: 600px; width: 100%; margin-top: 10px; }
+    input, button { padding: 6px; margin: 6px; }
+  </style>
+</head>
+<body>
+  
+  <h2>Map illustrating the geographic distribution of William J. Hooker's</h2>
+  <input type="text" id="surnameInput" placeholder="Surname (ex: Aberdeen)" /> 
+  <input type="number" id="yearMin" placeholder="From Year (ex: 1830)" />
+  <input type="number" id="yearMax" placeholder="To Year (ex: 1850)" /> 
+  <button onclick="search()"> Search</button>
+// la boîte de recherche
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let map = L.map("map").setView([30, 0], 2);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+// insérer des données(JSON) dans la carte // insert data(JSON) into the map
+    let layers = [];
+    let data = {
+      
+      "50-276": {
+        "Surname": "Zuccarini",
+        "Date_year": 1837,
+        "Current_location": "Australia","lat": -25.2744,
+        "lon": 133.7751
+      }
+      
+}; 
+   
+// initialisation de la carte // initialization of the map
+    function clearLayers() {
+      layers.forEach(layer => map.removeLayer(layer));
+      layers = [];
+    }
+// fonction de recherche // search function
+    function search() {
+      const surnameInput = document.getElementById("surnameInput").value.trim().toLowerCase();
+      const yearMin = parseInt(document.getElementById("yearMin").value);
+      const yearMax = parseInt(document.getElementById("yearMax").value);
+
+      clearLayers();
+      const locationCounts = {};
+
+      for (const [id, info] of Object.entries(data)) {
+        let surname = info.Surname;
+        surname = surname ? surname.toLowerCase() : "";
+        const year = parseInt(info.Date_year);
+        const lat = info.lat;
+        const lon = info.lon;
+// recherche des données pertinents // recherch relevant data
+        if (!lat || !lon || isNaN(year)) continue;
+
+        const surnameMatch = !surnameInput || (surname && surname.includes(surnameInput));
+        const yearMatch =
+          (!isNaN(yearMin) ? year >= yearMin : true) &&
+          (!isNaN(yearMax) ? year <= yearMax : true);
+
+//stocker des données pertinents // store relevant data         
+        if (surnameMatch && yearMatch) {
+          const key = `${lat},${lon}`;
+          locationCounts[key] = (locationCounts[key] || 0) + 1;
+        }
+      }
+// Création le cricles des lettres // Create circles for each unique location with counts
+      for (const key in locationCounts) {
+        const [lat, lon] = key.split(",").map(Number);
+        const count = locationCounts[key];
+
+        const circle = L.circle([lat, lon], {
+          radius: 20000 * Math.sqrt(count),
+          color: "blue",
+          fillColor: "blue",
+          fillOpacity: 0.4
+        })
+        .addTo(map)
+        .bindPopup(`${count} letter(s) at this location`);
+
+        layers.push(circle);
+      }
+// If no locations found, alert the user
+      if (Object.keys(locationCounts).length > 0) {
+        const [lat, lon] = Object.keys(locationCounts)[0].split(",").map(Number);
+        map.setView([lat, lon], 4);
+      } else {
+        alert("cant find.");
+      }
+    }
+  </script>
+</body>
+</html>
