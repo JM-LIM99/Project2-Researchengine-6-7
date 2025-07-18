@@ -11,7 +11,7 @@ référence de Code de python : https://github.com/Antonomaz/tools/tree/master/P
 
 4. créer Json des donées
 
-5. mettre sur HTML en forme de talbeaux
+5. mettre sur HTML en forme de tableaux
 
 
 
@@ -25,16 +25,16 @@ référence de HTML : https://datatables.net/forums/discussion/25346 et https://
 
 4. Ajouter une fonctionnalité de recherche pour chaque colonne
 
-5. Créer une boîte pour afficher les pages d’index et es notes
+5. Créer une boîte pour afficher les pages d’index et les notes
 
 Map. référence : naver blog et Chat GPT pas de Geopy
 
 
-1. Créer un JSON contenant les longitudes et latitudes : je l’ai réalisé manuellement avec la expression régulière, car Geopy impose une limite de requêtes.
+1. Créer un JSON contenant les longitudes et latitudes : je l’ai réalisé manuellement avec l'expression régulière, car Geopy impose une limite de requêtes.
 
 2. récupère le nom et l'années; utiliser "clearLyers"  
 
-3. recherche des donées pertinant et stocker dans locationCoubts
+3. recherche des donées pertinenetes et stocker dans locationCoubts
 
 4. afficher des données par circle: 
 
