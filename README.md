@@ -34,7 +34,7 @@ Map. référence : naver blog et Chat GPT pas de Geopy
 
 2. récupère le nom et l'années; utiliser "clearLyers"  
 
-3. recherche des donées pertinenetes et stocker dans locationCoubts
+3. recherche des donées pertinentes et stocker dans locationCoubts
 
 4. afficher des données par circle: 
 
