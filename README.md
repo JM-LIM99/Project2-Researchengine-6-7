@@ -21,16 +21,16 @@ référence de HTML : https://datatables.net/forums/discussion/25346 et https://
 
 2. mettre login form.   Une fois connecté, la fenêtre de connexion disparaît.
 
-3. secretInfo, hidden-col pour cacherl des informations
+3. secretInfo, hidden-col pour cacher des informations
 
 4. Ajouter une fonctionnalité de recherche pour chaque colonne
 
-5. Créer une boîte pour les pages d’index et es notes
+5. Créer une boîte pour afficher les pages d’index et es notes
 
 Map. référence : naver blog et Chat GPT pas de Geopy
 
 
-1. Créer un JSON contenant les longitudes et latitudes : je l’ai réalisé manuellement avec une expression régulière, car Geopy impose une limite de requêtes.
+1. Créer un JSON contenant les longitudes et latitudes : je l’ai réalisé manuellement avec la expression régulière, car Geopy impose une limite de requêtes.
 
 2. récupère le nom et l'années; utiliser "clearLyers"  
 
@@ -58,7 +58,7 @@ Python code reference: https://github.com/Antonomaz/tools/tree/master/Produce_Bi
 
 3. create dictionaries
 
-4. import the data as JSON
+4. create the data as JSON
 
 5. output to HTML in table format
 
@@ -72,7 +72,7 @@ HTML reference: https://datatables.net/forums/discussion/25346 and https://githu
 
 4. add a search feature for each column
 
-5. create a box for the index pages and notes
+5. create a box to show the index pages and notes
 
 Map reference: Naver Blog and ChatGPT (no Geopy)
 
