@@ -9,7 +9,7 @@ référence de Code de python : https://github.com/Antonomaz/tools/tree/master/P
 
 3. créer des dictionnaire
 
-4. créer des données en Json
+4. créer des Json des donées
 
 5. mettre sur HTML en forme de talbeaux
 
@@ -17,7 +17,7 @@ référence de Code de python : https://github.com/Antonomaz/tools/tree/master/P
 
 référence de HTML : https://datatables.net/forums/discussion/25346 et https://github.com/Antonomaz/tools/tree/master/Produce_Biblio_html
 
-1. utilisation de datatable
+1. utilisation de *datatable
 
 2. mettre login form.   Une fois connecté, la fenêtre de connexion disparaît.
 
