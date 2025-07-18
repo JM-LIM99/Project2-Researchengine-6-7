@@ -9,7 +9,7 @@ référence de Code de python : https://github.com/Antonomaz/tools/tree/master/P
 
 3. créer des dictionnaire
 
-4. créer des Json des donées
+4. créer Json des donées
 
 5. mettre sur HTML en forme de talbeaux
 
