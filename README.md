@@ -9,7 +9,7 @@ référence de Code de python : https://github.com/Antonomaz/tools/tree/master/P
 
 3. créer des dictionnaire
 
-4. import des données en Json
+4. créer des données en Json
 
 5. mettre sur HTML en forme de talbeaux
 
