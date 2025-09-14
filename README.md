@@ -1,5 +1,6 @@
 # Moteur de recherche des lettres 6, 7 (Stagiaire de CERES)
-
+L'object de ce code:
+Il s'agit de créer un moteur de recherche afin de faciliter la consultaion des lettres(un index manuscrit réalisé par Maria Hooker : 76 volumes) et de développer une carte permettant de visualiser les lieux d'envoi de cette correspondance.
 
 référence de Code de python : https://github.com/Antonomaz/tools/tree/master/Produce_Biblio_html
 
@@ -47,6 +48,11 @@ lien des résultats
 https://ceres.huma-num.fr/lettres/recherche
 
 https://ceres.huma-num.fr/lettres/carte
+
+
+------------English-----------------
+Objective of this code:
+The purpose is to create a search engine to facilitate the consultation of the letters (a handwritten index compiled by Maria Hooker: 76 volumes) and to develop a map to visualize the places from which this correspondence was sent.
 
 
 
