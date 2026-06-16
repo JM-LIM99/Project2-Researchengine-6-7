@@ -97,7 +97,3 @@ Link :
 https://ceres.huma-num.fr/lettres/recherche
 
 https://ceres.huma-num.fr/lettres/carte
-
-
-
-6월 7월 CERES 인턴 임정민  
